@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculer du Nombre de Jeunes</title>
+</head>
+<body>
+    <h1>Calcul du Nombre de Jeunes , de Moyens et de vieux</h1>
+    <button onclick="startCounting()"> Commencer le Comptage</button>
+    <div id="results" style="margin-top: 20px;"></div>
+    
+
+    <script>
+        
+        let countLessThan20 = 0;
+        let countMoreThan40 = 0;
+        let countBetween20And40 = 0;
+
+
+        function startCounting() {
+            let age;
+            while(true) {
+                age = prompt("Entrez un àge (ou 100 pour arrêter):");
+
+                age = parseInt(age, 10);
+
+                if(isNaN(age)) {
+                    alert("veuillez entrer un nombre valide")
+                    continue;
+                }
+                if(age < 20 ) {
+                    countLessThan20++;
+                } else if(age > 40) {
+                    countMoreThan40++;
+                } else if(age >= 20 && age <= 40) {
+                    countBetween20And40++;
+
+                }
+                if(age === 100) {
+                    break;
+                }
+            }
+            displayResults();
+        }
+        function displayResults() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML =`
+            <p> Nombre de personnes de moins de 20 ans : ${countLessThan20}</p>
+            <p> Nombre de personnes de plus de 40 ans : ${countMoreThan40}</p>
+            <p> Nombre de personnes entre 20 et 40 ans : ${countBetween20And40}</p>
+            `;
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer Prénom</title>
+</head>
+<body>
+    <h1>Supprimer de Prénom dans le Tableau:</h1>
+    <label for="prenom">Entrez un prénom pour Supprimer:</label>
+    <input type="text" id="prenom" name="prenom">
+    <button onclick="supprimerPrenom(tab, document.getElementById('prenom').value)">Supprimer Le prénom</button>
+    <h1>Tableau aprés supprimer</h1>
+    <pre id="result"></pre>
+
+    <script>
+        function supprimerPrenom(tab, prenom) {
+            const index = tab.indexOf(prenom);
+
+            if( index !== -1) {
+                for(let i = index; i < tab.length - 1; i++){
+                tab[i] = tab[i + 1];
+            }
+
+            tab[tab.length - 1] ="";
+            alert("Le prénom a été supprimer ave succès.");
+        } else {
+            alert("Erreur : le prénom n'a pas été trouvé dans le tableau")
+        }
+
+        document.getElementById('result').textContent = JSON.stringify(tab, null, 2);
+        }
+
+        let tab = ["Alice", "Musadaq", "Mohamed", "Abshir", "Imran", "Bob"];
+
+        document.getElementById('result').textContent = JSON.stringify(tab, null, 2);
+
+    </script>
+</body>
+</html>
